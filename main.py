@@ -1,4 +1,5 @@
 from random import randint
+from math import sqrt
 
 max = 10**2
 
@@ -14,18 +15,31 @@ def generarPuntos(n):
 def ordenarPorY():
     puntos.sort(key = lambda y: y[1])
 
-cmd = ""
-print("Para salir presione 0.")
-print("Para generar puntos  presione 1.")
-print("Para ordenarlos por su coordenada y presione 2.")
-while cmd != "0":
-    cmd = input("¿Qué desea hacer?: ")
-    if cmd == "1":
-        n = input("Seleccione el exponente: ")
-        generarPuntos(int(n))
-        print(puntos)
-    elif cmd == "2":
-        ordenarPorY()
-        print(puntos)
+def calcularDistancia(punto1,punto2):
+    x1, y1 = punto1
+    x2, y2 = punto2
+    x = (x2-x1)**2
+    y = (y2-y1)**2
+    return sqrt(x+y)
+    
+
+
+#cmd = ""
+#print("Para salir presione 0.")
+#print("Para generar puntos  presione 1.")
+#print("Para ordenarlos por su coordenada y presione 2.")
+#while cmd != "0":
+#    cmd = input("¿Qué desea hacer?: ")
+#    if cmd == "1":
+#        n = input("Seleccione el exponente: ")
+#        generarPuntos(int(n))
+#        print(puntos)
+#    elif cmd == "2":
+#        ordenarPorY()
+#        print(puntos)
+
+punto1 = (7,5)
+punto2 = (4,1)
+print(calcularDistancia(punto1,punto2))
     
 
