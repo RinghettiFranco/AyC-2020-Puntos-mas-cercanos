@@ -23,23 +23,5 @@ def calcularDistancia(punto1,punto2):
     return sqrt(x+y)
     
 
-
-#cmd = ""
-#print("Para salir presione 0.")
-#print("Para generar puntos  presione 1.")
-#print("Para ordenarlos por su coordenada y presione 2.")
-#while cmd != "0":
-#    cmd = input("¿Qué desea hacer?: ")
-#    if cmd == "1":
-#        n = input("Seleccione el exponente: ")
-#        generarPuntos(int(n))
-#        print(puntos)
-#    elif cmd == "2":
-#        ordenarPorY()
-#        print(puntos)
-
-punto1 = (4,1)
-punto2 = (7,5)
-print(calcularDistancia(punto1,punto2))
     
 
