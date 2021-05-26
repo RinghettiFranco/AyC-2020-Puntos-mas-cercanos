@@ -5,11 +5,10 @@ def pmcDyCAvanzado(puntos):
     puntosOrdenadosY = utils.ordenarPorY(puntos)
     return masCercanos(puntosOrdenadosX,puntosOrdenadosY,0,utils.MAX)
 
-def masCercanos(puntosOrdenadosX,puntosOrdenadosY,ini,fin):
-    cant = len(puntosOrdenadosX)
-    if cant <= 1:
+def masCercanos(puntosOrdenadosX:list,puntosOrdenadosY:list, ini:int,fin:int):
+    if len(puntosOrdenadosX) <= 1:
         return utils.INF
-    elif cant == 2:
+    elif len(puntosOrdenadosX) == 2:
         return utils.distancia(puntosOrdenadosX[0], puntosOrdenadosX[1])
     else:
         m = (ini+fin)//2
@@ -29,3 +28,6 @@ def masCercanos(puntosOrdenadosX,puntosOrdenadosY,ini,fin):
         d3 = utils.recorrer(d,franja)
         return min(d,d3)
 
+puntos = [(1,1), (2,2), (4,4), (8,8), (16,16), (32,32)]
+resultado = pmcDyCAvanzado(puntos)
+print(resultado)
