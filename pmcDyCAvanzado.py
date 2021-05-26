@@ -1,23 +1,31 @@
 import utils
 
 def pmcDyCAvanzado(puntos):
-    puntos = utils.ordenarPorX(puntos)
-    return masCercanos(puntos,0,utils.MAX)
+    puntosOrdenadosX = utils.ordenarPorX(puntos)
+    puntosOrdenadosY = utils.ordenarPorY(puntos)
+    return masCercanos(puntosOrdenadosX,puntosOrdenadosY,0,utils.MAX)
 
-def masCercanos(puntos,ini,fin):
-    cant = len(puntos)
-    if cant == 1:
+def masCercanos(puntosOrdenadosX,puntosOrdenadosY,ini,fin):
+    cant = len(puntosOrdenadosX)
+    if cant <= 1:
         return 0
     elif cant == 2:
-        return utils.distancia(puntos[0], puntos[1])
+        return utils.distancia(puntosOrdenadosX[0], puntosOrdenadosX[1])
     else:
         m = (ini+fin)//2
-        puntos1 = utils.aIzquierda(puntos,m)
-        puntos2 = utils.aDerecha(puntos,m)
-        d1 = masCercanos(puntos1,ini,m)
-        d2 = masCercanos(puntos2,m+1,fin) 
+        puntosOrdenadosX1 = utils.aIzquierda(puntosOrdenadosX,m)
+        puntosOrdenadosX2 = utils.aDerecha(puntosOrdenadosX,m)
+        puntosOrdenadosY1 = list()
+        puntosOrdenadosY2 = list()
+        for i in range(ini,fin):
+            if puntosOrdenadosY[i] in puntosOrdenadosX1:
+                puntosOrdenadosY1.append(puntosOrdenadosY[i])
+            else:
+                puntosOrdenadosY2.append(puntosOrdenadosY[i])
+        d1 = masCercanos(puntosOrdenadosX1,puntosOrdenadosY1,ini,m)
+        d2 = masCercanos(puntosOrdenadosX2,puntosOrdenadosY2,m+1,fin) 
         d = min(d1,d2)
-        franja = utils.crearFranja(puntos,2*d)
-        d3 = utils.recorrer(franja)
+        franja = utils.crearFranja(puntosOrdenadosY,m,d)
+        d3 = utils.recorrer(d,franja)
         return min(d,d3)
 
