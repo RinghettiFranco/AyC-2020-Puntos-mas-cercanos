@@ -17,10 +17,10 @@ def generarPuntos(n):
     return puntos
 
 def ordenarPorX(puntos):
-    return puntos.sort(key = lambda x: x[0])
+    return sorted(puntos, key = lambda x: x[0])
 
 def ordenarPorY(puntos):
-    return puntos.sort(key = lambda y: y[1])
+    return sorted(puntos, key = lambda y: y[1])
 
 # @brief Calcula la distancia euclidea entre dos puntos
 # @param punto1 Punto del plano (x, y)
@@ -39,8 +39,9 @@ def distancia(punto1, punto2):
 # @return Conjunto de puntos en el intervalo [0, m)
 def aIzquierda(puntos, m):
     puntosAIzq = list()
-    for i in range(0, m):
-        puntosAIzq.append(puntos[i])
+    for punto in puntos: 
+        if punto[0] < m:
+            puntosAIzq.append(punto)
     return puntosAIzq
 
 # @biref Toma los ultimos m puntos del conjunto
@@ -49,8 +50,9 @@ def aIzquierda(puntos, m):
 # @return Conjunto de puntos en el intervalo [m, max]
 def aDerecha(puntos, m):
     puntosADer = list()
-    for i in range(m, len(puntos)):
-        puntosADer.append(puntos[i])
+    for punto in puntos:
+        if punto[0] >= m:
+            puntosADer.append(punto)
     return puntosADer
 
 # @brief Crea una franja en el plano que contiene puntos
@@ -60,9 +62,9 @@ def aDerecha(puntos, m):
 # @return Conjunto de puntos contenidos en la franja
 def crearFranja(puntos, m, d):
     franja = list()
-    for i in puntos:
-       if puntos[i][0] in (m-d, m+d):
-           franja.append(puntos[i][0])
+    for punto in puntos:
+        if punto[0] in (m-d, m+d):
+           franja.append(punto)
     return franja 
 
 # @brief Ni idea, este se los dejo
@@ -70,18 +72,15 @@ def crearFranja(puntos, m, d):
 # @param franja
 # @return 
 def recorrer(d, franja):
-    for i in franja:
-        for j in (i+1, len(franja)):
-            ydiff = franja[j][1] - franja[i][1]
-            if not ydiff > d:
-                dist = distancia(franja[j], franja[i])
+    for punto1 in franja:
+        for punto2 in franja:
+            ydiff = punto2[1] - punto1[1]
+            if not ydiff > d and not ydiff==0:
+                dist = distancia(punto2, punto1)
                 if dist < d:
                     d = dist
     return d
     
-
-
-
 def timer_function(function):
     def function_timer(*args, **kwargs):
         start = time.time()

@@ -16,18 +16,19 @@ def masCercanos(puntosOrdenadosX:list,puntosOrdenadosY:list, ini:int,fin:int):
         puntosOrdenadosX2 = utils.aDerecha(puntosOrdenadosX,m)
         puntosOrdenadosY1 = list()
         puntosOrdenadosY2 = list()
-        for i in range(ini,fin):
-            if puntosOrdenadosY[i] in puntosOrdenadosX1:
-                puntosOrdenadosY1.append(puntosOrdenadosY[i])
+        for punto in puntosOrdenadosY:
+            if punto in puntosOrdenadosX1:
+                puntosOrdenadosY1.append(punto)
             else:
-                puntosOrdenadosY2.append(puntosOrdenadosY[i])
+                puntosOrdenadosY2.append(punto)
         d1 = masCercanos(puntosOrdenadosX1,puntosOrdenadosY1,ini,m)
         d2 = masCercanos(puntosOrdenadosX2,puntosOrdenadosY2,m+1,fin) 
         d = min(d1,d2)
         franja = utils.crearFranja(puntosOrdenadosY,m,d)
-        d3 = utils.recorrer(d,franja)
-        return min(d,d3)
+        if franja:
+            d3 = utils.recorrer(d,franja)
+            return min(d,d3)
+        else:
+            return d
 
-puntos = [(1,1), (2,2), (4,4), (8,8), (16,16), (32,32)]
-resultado = pmcDyCAvanzado(puntos)
-print(resultado)
+
