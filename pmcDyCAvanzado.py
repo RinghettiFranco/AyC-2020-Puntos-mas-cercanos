@@ -8,7 +8,7 @@ def pmcDyCAvanzado(puntos):
 def masCercanos(puntosOrdenadosX,puntosOrdenadosY,ini,fin):
     cant = len(puntosOrdenadosX)
     if cant <= 1:
-        return 0
+        return utils.INF
     elif cant == 2:
         return utils.distancia(puntosOrdenadosX[0], puntosOrdenadosX[1])
     else:

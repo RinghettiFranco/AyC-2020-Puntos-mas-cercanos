@@ -2,6 +2,7 @@ from random import randint
 from math import sqrt
 
 MAX = 10**9
+INF = float('inf')
 
 def generarPuntos(n):
     puntos = list()
