@@ -43,4 +43,4 @@ def test():
     pmcBasico(Puntos)
     pmcBasicoOptimizado(Puntos)
 
-test()
+#test()

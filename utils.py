@@ -2,6 +2,8 @@ from random import randint
 from math import sqrt
 import time
 
+CX = 0
+CY = 1 
 MAX = 10**9
 INF = float('inf')
 
@@ -63,7 +65,7 @@ def aDerecha(puntos, m):
 def crearFranja(puntos, m, d):
     franja = list()
     for punto in puntos:
-        if punto[0] in (m-d, m+d):
+        if punto[CX] in (m-d, m+d):
            franja.append(punto)
     return franja 
 
@@ -71,16 +73,13 @@ def crearFranja(puntos, m, d):
 # @param d
 # @param franja
 # @return 
-def recorrer(d, franja):
-    for punto1 in franja:
-        for i in (1,7):
-            punto2 = franja[franja.index(punto1)+i]
-            ydiff = punto2[1] - punto1[1]
-            if not ydiff > d and not ydiff==0:
-                dist = distancia(punto2, punto1)
-                if dist < d:
-                    d = dist
-    return d
+def recorrer(franja):
+    dist = INF
+    for i in range(len(franja)):
+        for j in range(i+1,min(i+7,len(franja))):
+            distActual = distancia(franja[i],franja[j])
+            dist = min(dist,distActual)
+    return dist
     
 def timer_function(function):
     def function_timer(*args, **kwargs):
