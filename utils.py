@@ -73,7 +73,8 @@ def crearFranja(puntos, m, d):
 # @return 
 def recorrer(d, franja):
     for punto1 in franja:
-        for punto2 in franja:
+        for i in (1,7):
+            punto2 = franja[franja.index(punto1)+i]
             ydiff = punto2[1] - punto1[1]
             if not ydiff > d and not ydiff==0:
                 dist = distancia(punto2, punto1)
