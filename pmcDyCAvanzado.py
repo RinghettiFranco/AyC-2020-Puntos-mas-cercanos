@@ -10,6 +10,8 @@ def masCercanos(puntosOrdenadosX:list,puntosOrdenadosY:list, ini:int,fin:int):
         return utils.INF
     elif len(puntosOrdenadosX) == 2:
         return utils.distancia(puntosOrdenadosX[0], puntosOrdenadosX[1])
+    elif ini==fin:
+        return recorrerLinea(puntosOrdenadosY)
     else:
         m = (ini+fin)//2
         puntosOrdenadosX1 = utils.aIzquierda(puntosOrdenadosX,m)
@@ -17,7 +19,7 @@ def masCercanos(puntosOrdenadosX:list,puntosOrdenadosY:list, ini:int,fin:int):
         puntosOrdenadosY1 = list()
         puntosOrdenadosY2 = list()
         for punto in puntosOrdenadosY:
-            if punto in puntosOrdenadosX1:
+            if punto[0] < m:
                 puntosOrdenadosY1.append(punto)
             else:
                 puntosOrdenadosY2.append(punto)
@@ -31,4 +33,11 @@ def masCercanos(puntosOrdenadosX:list,puntosOrdenadosY:list, ini:int,fin:int):
         else:
             return d
 
+def recorrerLinea(puntos):
+    d = utils.INF
+    for i in (0,len(puntos)-2):
+        d = min(d,utils.distancia(puntos[i],puntos[i+1]))
+    return d
+
+        
 
