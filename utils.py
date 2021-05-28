@@ -65,7 +65,7 @@ def aDerecha(puntos, m):
 def crearFranja(puntos, m, d):
     franja = list()
     for punto in puntos:
-        if punto[CX] in (m-d, m+d):
+        if punto[CX]>=(m-d) and punto[CX]<=(m+d):
            franja.append(punto)
     return franja 
 
@@ -91,3 +91,5 @@ def timer_function(function):
         print(msg.format(func = function.__name__,time = runtime))
         return value
     return function_timer
+
+    
