@@ -22,6 +22,8 @@ for n in range(1,14):
     print('Basico: ' + str(r1))
     r2 = pmcBasicoOptimizado(lista)
     print('Basico optimizado: ' + str(r2))
+    r3 = pmcDyCComun(lista)
+    print('Dividir y conquistar comun: ' + str(r3))
     r4 = pmcDyCAvanzado(lista)
     print('Dividir y conquistar avanzado: ' + str(r4))
     print('--------------------------------------------------------------------') 
