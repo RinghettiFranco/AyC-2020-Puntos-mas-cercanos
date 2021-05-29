@@ -7,20 +7,19 @@ def pmcDyCAvanzado(puntos):
     puntosOrdenadosY = ordenarPorY(puntos)
     return masCercanos(puntosOrdenadosX,puntosOrdenadosY)
 
-def masCercanos(puntosOrdenadosX,puntosOrdenadosY):
+def masCercanos(puntosOrdenadosX:list,puntosOrdenadosY:list):
     if len(puntosOrdenadosX) <= 16:
         return pmcBasicoOptimizado(puntosOrdenadosX)
     else:
-        n = len(puntosOrdenadosX)
-        medio = n//2 - 1 
+        medio = (len(puntosOrdenadosX))//2 - 1 
         puntoMedio = puntosOrdenadosX[medio]
         m = puntoMedio[CX]
-        puntosOrdenadosX1 = puntosOrdenadosX[:n//2]
-        puntosOrdenadosX2 = puntosOrdenadosX[n//2:]
+        puntosOrdenadosX1 = puntosOrdenadosX[:len(puntosOrdenadosX)//2]
+        puntosOrdenadosX2 = puntosOrdenadosX[len(puntosOrdenadosX)//2:]
         puntosOrdenadosY1 = list()
         puntosOrdenadosY2 = list()
         for punto in puntosOrdenadosY:
-            if punto[CX] < m or (punto[CX]==m and punto[CY] < puntoMedio[CY]):
+            if punto[CX] < m:
                 puntosOrdenadosY1.append(punto)
             else:
                 puntosOrdenadosY2.append(punto)
@@ -30,6 +29,7 @@ def masCercanos(puntosOrdenadosX,puntosOrdenadosY):
         franja = crearFranja(puntosOrdenadosY,m,d)
         d3 = recorrer(franja)
         return min(d,d3)
+
 
         
 
