@@ -1,7 +1,7 @@
 from math import *
 from utils import *
 
-# Probamos todos con todos, cual orgia de Liberace (?)
+
 @timer_function
 def pmcBasico(Puntos):
     min_dist = INF
@@ -15,7 +15,6 @@ def pmcBasico(Puntos):
                     pj = j
                     min_dist = m
 
-   # print(f'Distancia minima: {min_dist} entre los puntos {pi} y {pj}')
 
     return min_dist
 
