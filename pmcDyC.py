@@ -6,10 +6,24 @@ from utils import *
  
 INF = float('inf')
 
+def algoritmoBasico(Puntos):
+    min_dist = INF
+
+    for i in range(0, len(Puntos)):
+        for j in range(i, len(Puntos)):
+            if i != j:
+                m = min(min_dist, distancia(Puntos[i], Puntos[j]))
+                if m < min_dist:
+                    pi = Puntos[i]
+                    pj = Puntos[j]
+                    min_dist = m
+
+    return min_dist     
+
 def pmcRec(P, Q, n):
 		
 	if n <= 3:
-		return pmcBasicoOptimizado(P)
+		return algoritmoBasico(P)
 
 	mitad = n // 2
 	puntoMedio = P[mitad]
@@ -31,7 +45,6 @@ def pmcRec(P, Q, n):
 			franjaPorY.append(Q[i])
 
 	franjaPorY.sort(key=lambda x:x[1])
-	#franjaPorX.sort(key=lambda x:x[0])
 	min_a = min(d, recorrer(franjaPorX))
 	min_b = min(d, recorrer(franjaPorY))
 	
@@ -40,8 +53,6 @@ def pmcRec(P, Q, n):
 @timer_function
 def pmcDyCComun(P):
 	P.sort(key = lambda x: x[0])
-	#Q = copy.deepcopy(P)
-	#Q.sort(key = lambda y: y[1])
 	return pmcRec(P, P, len(P))
 
 
