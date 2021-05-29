@@ -15,7 +15,7 @@ def pmcBasico(Puntos):
                     pj = j
                     min_dist = m
 
-    print(f'Distancia minima: {min_dist} entre los puntos {pi} y {pj}')
+    #print(f'Distancia minima: {min_dist} entre los puntos {pi} y {pj}')
 
     return min_dist
 
@@ -34,7 +34,7 @@ def pmcBasicoOptimizado(Puntos):
                     pj = Puntos[j]
                     min_dist = m
     
-    print(f'Distancia minima: {min_dist} entre los puntos {pi} y {pj}')
+    #print(f'Distancia minima: {min_dist} entre los puntos {pi} y {pj}')
 
     return min_dist
 

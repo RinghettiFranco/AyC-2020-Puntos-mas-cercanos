@@ -1,5 +1,4 @@
 from utils import *
-from pmcBasico import *
 
 @timer_function
 def pmcDyCAvanzado(puntos):
@@ -9,7 +8,7 @@ def pmcDyCAvanzado(puntos):
 
 def masCercanos(puntosOrdenadosX,puntosOrdenadosY):
     if len(puntosOrdenadosX) <= 16:
-        return pmcBasicoOptimizado(puntosOrdenadosX)
+        return algoritmoBasico(puntosOrdenadosX)
     else:
         n = len(puntosOrdenadosX)
         medio = n//2 - 1 
@@ -31,5 +30,18 @@ def masCercanos(puntosOrdenadosX,puntosOrdenadosY):
         d3 = recorrer(franja)
         return min(d,d3)
 
-        
+def algoritmoBasico(Puntos):
+    min_dist = INF
+
+    for i in range(0, len(Puntos)):
+        for j in range(i, len(Puntos)):
+            if i != j:
+                m = min(min_dist, distancia(Puntos[i], Puntos[j]))
+                if m < min_dist:
+                    pi = Puntos[i]
+                    pj = Puntos[j]
+                    min_dist = m
+
+    return min_dist        
+
 
