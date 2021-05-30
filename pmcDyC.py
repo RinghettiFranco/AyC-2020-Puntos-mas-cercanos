@@ -20,39 +20,47 @@ def algoritmoBasico(Puntos):
 
     return min_dist     
 
-def pmcRec(P, Q, n):
-		
-	if n <= 3:
-		return algoritmoBasico(P)
+def pmcDyC(P):
+    n= len(P)
+    if n <= 3:
+       return algoritmoBasico(P)
+       
 
-	mitad = n // 2
-	puntoMedio = P[mitad]
-	Pl = P[:mitad]
-	Pr = P[mitad:]
-	dl = pmcRec(Pl, Q, mitad)
-	dr = pmcRec(Pr, Q, n - mitad)
-	d = min(dl, dr)
-	franjaPorX = []
-	franjaPorY = []
-	x,_ = puntoMedio
-	
-	for i in range(n):
-		x1,_ = P[i]
-		x2,_ = Q[i]
-		if abs(x1 - x) < d:
-			franjaPorX.append(P[i])
-		if abs(x2 - x) < d:
-			franjaPorY.append(Q[i])
+    else:
+        minDist = float('inf')
+        mitad = n // 2
+        xMedio, yMedio = P[mitad]
+        pizq = P[:mitad]
+        pder = P[mitad:]
+        
+        dIzq = pmcDyC(pizq)
+        dDer = pmcDyC(pder)
 
-	franjaPorY.sort(key=lambda x:x[1])
-	min_a = min(d, recorrer(franjaPorX))
-	min_b = min(d, recorrer(franjaPorY))
-	
-	return min(min_a,min_b)
+        minDist = min(dIzq, dDer)
+
+        YN = list()
+
+        Y = ordenarPorY(P)
+        yIzq = Y[:mitad]
+        yDer = Y[mitad:]
+
+
+        for i in range(len(Y)):
+            x,_ = Y[i]
+            if abs (x-xMedio) < minDist:
+                YN.append(Y[i])
+        
+        d3 = recorrer(YN)
+       
+        return min(minDist , d3)
 
 @timer_function
-def pmcDyCComun(P):
-	P.sort(key = lambda x: x[0])
-	return pmcRec(P, P, len(P))
+def pmc(P):
+    Puntos = ordenarPorX(P)
+    return pmcDyC (Puntos)
+
+
+
+
 
 
