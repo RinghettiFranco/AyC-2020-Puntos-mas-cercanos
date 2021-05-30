@@ -36,6 +36,8 @@ def masCercanos(puntosOrdenadosX:list,puntosOrdenadosY:list):
 
 def algoritmoBasico(Puntos):
     min_dist = INF
+    pi = (-1,-1)
+    pj = (-1,-1)
 
     for i in range(0, len(Puntos)):
         for j in range(i, len(Puntos)):
