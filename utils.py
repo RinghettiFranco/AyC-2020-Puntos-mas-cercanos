@@ -88,11 +88,11 @@ def recorrer(franja):
     
 def timer_function(function):
     def function_timer(*args, **kwargs):
-        start = time.time() 
+        start = time.time_ns() 
         value = function(*args, **kwargs)
-        end = time.time() 
+        end = time.time_ns() 
         runtime = end - start
-        msg = "{func} took {time} seconds to complete its execution."
+        msg = "{func} tardó {time} nanosegundos en completar su ejecución."
         print(msg.format(func = function.__name__,time = runtime))
         return value
     return function_timer
