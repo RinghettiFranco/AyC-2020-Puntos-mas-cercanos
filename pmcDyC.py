@@ -55,7 +55,7 @@ def pmcDyC(P):
         return min(minDist , d3)
 
 @timer_function
-def pmc(P):
+def pmcDyCSimple(P):
     Puntos = ordenarPorX(P)
     return pmcDyC (Puntos)
 

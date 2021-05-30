@@ -17,14 +17,15 @@ lista = []
 print('--------------------------------------------------------------------')
 for n in range(1,14):
     lista = generarPuntos(n)
-    print('Para n = ' + str(n) + ' tal que #puntos=2^n:')
+    
+    print('\nPara n = ' + str(n) + ' tal que #puntos=2^n: \n')
     r1 = pmcBasico(lista)
-    print('Basico: ' + str(r1))
+    print('\nBasico: ' + str(r1)+" \n")
     r2 = pmcBasicoOptimizado(lista)
-    print('Basico optimizado: ' + str(r2))
-    r3 = pmcDyCComun(lista)
-    print('Dividir y conquistar comun: ' + str(r3))
+    print('\nBasico optimizado: ' + str(r2)+" \n")
+    r3 = pmcDyCSimple(lista)
+    print('\nDividir y conquistar simple: ' + str(r3)+" \n")
     r4 = pmcDyCAvanzado(lista)
-    print('Dividir y conquistar avanzado: ' + str(r4))
+    print('\nDividir y conquistar avanzado: ' + str(r4)+" \n")
     print('--------------------------------------------------------------------') 
 
