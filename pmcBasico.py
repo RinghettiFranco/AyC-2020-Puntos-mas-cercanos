@@ -15,7 +15,6 @@ def pmcBasico(Puntos):
                     pj = j
                     min_dist = m
 
-
     return min_dist, pi, pj
 
 # Optimizacion aplicada considerando la propiedad de
@@ -32,14 +31,5 @@ def pmcBasicoOptimizado(Puntos):
                     pi = Puntos[i]
                     pj = Puntos[j]
                     min_dist = m
-    
-    #print(f'Distancia minima: {min_dist} entre los puntos {pi} y {pj}')
 
     return min_dist, pi, pj
-
-def test():
-    Puntos = generarPuntos(9) # Genero 2^9 puntos aleatorios
-    pmcBasico(Puntos)
-    pmcBasicoOptimizado(Puntos)
-
-#test()
