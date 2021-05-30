@@ -78,14 +78,17 @@ def recorrer(franja):
     for i in range(len(franja)):
         for j in range(i+1,min(i+7,len(franja))):
             distActual = distancia(franja[i],franja[j])
-            dist = min(dist,distActual)
-    return dist
+            if distActual < dist:
+                dist = distActual
+                pi = franja[i]
+                pj = franja[j]
+    return dist, pi, pj
     
 def timer_function(function):
     def function_timer(*args, **kwargs):
-        start = time.time()
+        start = time.time_ns() 
         value = function(*args, **kwargs)
-        end = time.time()
+        end = time.time_ns() 
         runtime = end - start
         msg = "{func} took {time} seconds to complete its execution."
         print(msg.format(func = function.__name__,time = runtime))

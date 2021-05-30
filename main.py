@@ -3,29 +3,18 @@ from pmcDyCAvanzado import *
 from pmcBasico import *
 from pmcDyC import *
 
-#lista = generarPuntos(12)
-#r1 = pmcBasico(lista)
-#r2 = pmcBasicoOptimizado(lista)
-#r3 = pmcDyC(lista)
-#r4 = pmcDyCAvanzado(lista)
-#print('Basico: ' + str(r1))
-#print('Basico optimizado: ' + str(r2))
-#print('Dividir y conquistar basico: ' + str(r3))
-#print('Dividir y conquistar avanzado: ' + str(r4))
-
-lista = []
-print('--------------------------------------------------------------------')
-for n in range(1,14):
-    lista = generarPuntos(n)
-    
-    print('\nPara n = ' + str(n) + ' tal que #puntos=2^n: \n')
-    r1 = pmcBasico(lista)
-    print('\nBasico: ' + str(r1)+" \n")
-    r2 = pmcBasicoOptimizado(lista)
-    print('\nBasico optimizado: ' + str(r2)+" \n")
-    r3 = pmcDyCSimple(lista)
-    print('\nDividir y conquistar simple: ' + str(r3)+" \n")
-    r4 = pmcDyCAvanzado(lista)
-    print('\nDividir y conquistar avanzado: ' + str(r4)+" \n")
-    print('--------------------------------------------------------------------') 
+puntos = []
+print('------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------')
+for n in range(1,5):
+    puntos = generarPuntos(n)
+    print('Para n = ' + str(n) + ' tal que #puntos=2^n=2^' + str(n) + '=' + str(2**n)  + ':')
+    r1 = pmcBasico(puntos)
+    print('Basico: ' + str(r1[0]) + ' entre los puntos ' + str(r1[1]) + ' y ' + str(r1[2]))
+    r2 = pmcBasicoOptimizado(puntos)
+    print('Basico optimizado: ' + str(r2[0]) + ' entre los puntos ' + str(r2[1]) + ' y ' + str(r2[2]))
+    r3 = pmcDyCSimple(puntos)
+    print('Dividir y conquistar simple: ' + str(r3[0]) + ' entre los puntos ' + str(r3[1]) + ' y ' + str(r3[2]))
+    r4 = pmcDyCAvanzado(puntos)
+    print('Dividir y conquistar avanzado: ' + str(r4[0]) + ' entre los puntos ' + str(r4[1]) + ' y ' + str(r4[2]))
+    print('------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------') 
 

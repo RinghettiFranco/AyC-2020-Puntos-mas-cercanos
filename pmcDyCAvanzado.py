@@ -22,12 +22,17 @@ def masCercanos(puntosOrdenadosX:list,puntosOrdenadosY:list):
                 puntosOrdenadosY1.append(punto)
             else:
                 puntosOrdenadosY2.append(punto)
-        d1 = masCercanos(puntosOrdenadosX1,puntosOrdenadosY1)
-        d2 = masCercanos(puntosOrdenadosX2,puntosOrdenadosY2) 
-        d = min(d1,d2)
-        franja = crearFranja(puntosOrdenadosY,m,d)
-        d3 = recorrer(franja)
-        return min(d,d3)
+        r1 = masCercanos(puntosOrdenadosX1,puntosOrdenadosY1)
+        r2 = masCercanos(puntosOrdenadosX2,puntosOrdenadosY2) 
+        if r1[0] < r2[0]:
+            r = r1
+        else:
+            r = r2 
+        franja = crearFranja(puntosOrdenadosY,m,r[0])
+        r3 = recorrer(franja)
+        if r3[0] < r[0]:
+            r = r3
+        return r
 
 def algoritmoBasico(Puntos):
     min_dist = INF
@@ -41,6 +46,6 @@ def algoritmoBasico(Puntos):
                     pj = Puntos[j]
                     min_dist = m
 
-    return min_dist        
+    return min_dist, pi, pj       
 
 

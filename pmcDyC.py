@@ -18,7 +18,7 @@ def algoritmoBasico(Puntos):
                     pj = Puntos[j]
                     min_dist = m
 
-    return min_dist     
+    return min_dist, pi, pj     
 
 def pmcDyC(P):
     n= len(P)
@@ -33,26 +33,27 @@ def pmcDyC(P):
         pizq = P[:mitad]
         pder = P[mitad:]
         
-        dIzq = pmcDyC(pizq)
-        dDer = pmcDyC(pder)
-
-        minDist = min(dIzq, dDer)
+        rIzq = pmcDyC(pizq)
+        rDer = pmcDyC(pder)
+        if rIzq[0] < rDer[0]:
+            r = rIzq
+        else:
+            r = rDer 
 
         YN = list()
 
         Y = ordenarPorY(P)
-        yIzq = Y[:mitad]
-        yDer = Y[mitad:]
-
 
         for i in range(len(Y)):
             x,_ = Y[i]
             if abs (x-xMedio) < minDist:
                 YN.append(Y[i])
         
-        d3 = recorrer(YN)
-       
-        return min(minDist , d3)
+        r3 = recorrer(YN)
+        if r3[0] < r[0]:
+            r = r3
+
+        return r
 
 @timer_function
 def pmcDyCSimple(P):

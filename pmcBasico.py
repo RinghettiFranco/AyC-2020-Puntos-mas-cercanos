@@ -16,11 +16,11 @@ def pmcBasico(Puntos):
                     min_dist = m
 
 
-    return min_dist
+    return min_dist, pi, pj
 
 # Optimizacion aplicada considerando la propiedad de
 # conmutatividad de la distancia. dist(x, y) = dist(y, x)
-#@timer_function
+@timer_function
 def pmcBasicoOptimizado(Puntos):
     min_dist = INF
 
@@ -35,7 +35,7 @@ def pmcBasicoOptimizado(Puntos):
     
     #print(f'Distancia minima: {min_dist} entre los puntos {pi} y {pj}')
 
-    return min_dist
+    return min_dist, pi, pj
 
 def test():
     Puntos = generarPuntos(9) # Genero 2^9 puntos aleatorios
