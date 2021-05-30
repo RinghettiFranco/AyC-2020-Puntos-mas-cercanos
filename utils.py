@@ -69,12 +69,14 @@ def crearFranja(puntos, m, d):
            franja.append(punto)
     return franja 
 
-# @brief Ni idea, este se los dejo
+# @brief Recorrido optimizado de la franja considerando los 7 puntos siguientes unicamente
 # @param d
 # @param franja
 # @return 
 def recorrer(franja):
     dist = INF
+    pi = (-1,-1)
+    pj = (-1,-1)
     for i in range(len(franja)):
         for j in range(i+1,min(i+7,len(franja))):
             distActual = distancia(franja[i],franja[j])
@@ -86,9 +88,9 @@ def recorrer(franja):
     
 def timer_function(function):
     def function_timer(*args, **kwargs):
-        start = time.time_ns() 
+        start = time.time() 
         value = function(*args, **kwargs)
-        end = time.time_ns() 
+        end = time.time() 
         runtime = end - start
         msg = "{func} took {time} seconds to complete its execution."
         print(msg.format(func = function.__name__,time = runtime))
