@@ -18,7 +18,7 @@ def masCercanos(puntosOrdenadosX:list,puntosOrdenadosY:list):
         puntosOrdenadosY1 = list()
         puntosOrdenadosY2 = list()
         for punto in puntosOrdenadosY:
-            if punto[CX] < m:
+            if punto[CX] < m or (punto[CX] == m and punto[CY]<puntoMedio[CY]):
                 puntosOrdenadosY1.append(punto)
             else:
                 puntosOrdenadosY2.append(punto)
