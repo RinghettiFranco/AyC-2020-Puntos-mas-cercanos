@@ -1,13 +1,13 @@
 from utils import *
 
-#@timer_function
+@timer_function
 def pmcDyCAvanzado(puntos):
     puntosOrdenadosX = ordenarPorX(puntos)
     puntosOrdenadosY = ordenarPorY(puntos)
     return masCercanos(puntosOrdenadosX,puntosOrdenadosY)
 
 def masCercanos(puntosOrdenadosX:list,puntosOrdenadosY:list):
-    if len(puntosOrdenadosX) <= 3:
+    if len(puntosOrdenadosX) <= 16:
         return algoritmoBasico(puntosOrdenadosX)
     else:
         medio = (len(puntosOrdenadosX))//2 - 1
