@@ -1,0 +1,6 @@
+#Como Windows Defender toma todos los .bat descargados como virus,
+#para ejecutar nuestro programa convierta este archivo en .bat y
+#ejecutelo. Otra alternativa es ejecutar el comando a continuación
+#por consola (contemplando la ruta hacia el archivo main.py)
+
+python main.py

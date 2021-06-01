@@ -7,7 +7,7 @@ def pmcDyCAvanzado(puntos):
     return masCercanos(puntosOrdenadosX,puntosOrdenadosY)
 
 def masCercanos(puntosOrdenadosX:list,puntosOrdenadosY:list):
-    if len(puntosOrdenadosX) <= 16:
+    if len(puntosOrdenadosX) <= 32:
         return algoritmoBasico(puntosOrdenadosX)
     else:
         medio = (len(puntosOrdenadosX))//2 - 1
